@@ -79,6 +79,9 @@ node_attributes:
         - initials: th
           name: Tim Hausler
           username: thausler
+        - initials: mx
+          name: Michael Xu
+          username: michaelxupiv
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/bosh-lite
