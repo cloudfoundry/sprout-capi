@@ -55,9 +55,6 @@ node_attributes:
         'url."git@github.com:".pushInsteadOf': 'https://github.com/'
         'submodule.fetchJobs': 16
       authors:
-        - initials: ad
-          name: Amelia Downs
-          username: adowns
         - initials: ur
           name: Urvashi Reddy
           username: ureddy
@@ -82,6 +79,9 @@ node_attributes:
         - initials: jb
           name: Jonathan Berkhahn
           email: jaberkha@us.ibm.com
+        - initials: ls
+          name: Luan Santos
+          username: lsantos
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/bosh-lite
