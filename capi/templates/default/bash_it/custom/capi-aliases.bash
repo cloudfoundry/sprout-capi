@@ -5,9 +5,9 @@ alias cats='(cd ~/workspace/cf-release/src/github.com/cloudfoundry/cf-acceptance
 alias v3-cats='(cd ~/workspace/cf-release/src/github.com/cloudfoundry/cf-acceptance-tests && CONFIG=$PWD/integration_config.json bin/test --nodes=3 v3)'
 
 # Deploying
-alias qnd-deploy='(cd ~/workspace/cf-release && scripts/deploy --no-manifest)'
+alias qnd-deploy='(cd ~/workspace/cf-release && scripts/deploy-dev-release-to-bosh-lite --no-manifest)'
 alias qnd-deploy-diego='(cd ~/workspace/diego-release && bosh --parallel 10 sync blobs && scripts/update && scripts/deploy && bosh deployment ~/workspace/cf-release/bosh-lite/deployments/cf.yml)'
-alias qnd-deploy-manifest='(cd ~/workspace/cf-release && scripts/deploy)'
+alias qnd-deploy-manifest='(cd ~/workspace/cf-release && scripts/deploy-dev-release-to-bosh-lite)'
 
 # PSQL
 alias psql-bosh-lite='psql -h 10.244.0.30 -p 5524 -U ccadmin ccdb'
