@@ -82,6 +82,9 @@ node_attributes:
         - initials: ls
           name: Luan Santos
           username: lsantos
+        - initials: gc
+          name: Greg Cobb
+          username: gcobb
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/bosh-lite
