@@ -27,7 +27,7 @@ execute 'install cf cli CLI-Recorder plugin' do
 end
 
 execute 'install cf cli v3-cli-plugin plugin' do
-  command "cf uninstall-plugin v3_beta; cf install-plugin https://github.com/cloudfoundry/v3-cli-plugin/blob/master/bin/OSX_binary?raw=true -f"
+  command "cf uninstall-plugin v3_beta; cf install-plugin https://github.com/cloudfoundry/v3-cli-plugin/releases/download/v0.5.2/v3-cli-plugin.osx -f"
   user node['sprout']['user']
 end
 
