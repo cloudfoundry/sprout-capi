@@ -5,18 +5,18 @@
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
 to run a subset of the recipes in sprout's cookbooks.
 
-[Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
-customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
-you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
-of the many [community cookbooks](https://supermarket.chef.io/cookbooks). By default it configures an OS X 
+[Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to
+customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes
+you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one
+of the many [community cookbooks](https://supermarket.chef.io/cookbooks). By default it configures an OS X
 Mavericks workstation for Ruby development.
 
-Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
+Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates.
 
 ## Installation under Mavericks (OS X 10.9)
 
 ### 1. Install Command Line Tools
-  
+
     xcode-select --install
 
 If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
@@ -54,6 +54,22 @@ one may want to run the following commands:
 
 ```
 recreate_bosh_lite
+```
+## Installation under Sierra (macOS 10.12)
+
+The instructions are similar to those of OS X Mavericks.
+
+You may see an error similar to the following:
+
+```
+Permission denied - /Users/jill-user/Library/Caches/Homebrew/Cask/flycut--1.8.zip.incomplete`
+```
+
+It's caused by files in the home directory not owned by the user.
+The solution is to fix the ownerships:
+
+```
+sudo chown -R $USER ~
 ```
 
 ## Caveats

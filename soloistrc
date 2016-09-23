@@ -218,7 +218,6 @@ node_attributes:
       - jq
       - node
       - pstree
-      - qt
       - s3cmd
       - ssh-copy-id
       - tig
@@ -237,7 +236,6 @@ node_attributes:
       - itsycal
       - karabiner
       - macvim
-      - menumeters
       - mou
       - sequel-pro
       - screenhero
@@ -247,7 +245,6 @@ node_attributes:
       - virtualbox
       - atom
       - xscope
-      - bittorrent-sync
     taps:
       - cloudfoundry/tap
       - universal-ctags/universal-ctags
