@@ -55,9 +55,9 @@ node_attributes:
         'url."git@github.com:".pushInsteadOf': 'https://github.com/'
         'submodule.fetchJobs': 16
       authors:
-        - initials: ur
-          name: Urvashi Reddy
-          username: ureddy
+        - initials: as
+          name: Aakash Shah
+          username: ashah
         - initials: uu
           name: Utako Ueda
           username: uueda
