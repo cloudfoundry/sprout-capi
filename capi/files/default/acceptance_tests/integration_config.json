@@ -1,8 +1,27 @@
 {
   "api": "api.bosh-lite.com",
+  "apps_domain": "bosh-lite.com",
   "admin_user": "admin",
   "admin_password": "admin",
-  "apps_domain": "bosh-lite.com",
   "skip_ssl_validation": true,
-  "artifacts_directory": "/tmp/cats-trace"
+  "use_http": false,
+  "backend": "dea",
+
+  "include_apps": true,
+  "include_v3": true,
+  "include_detect": true,
+  "include_tasks": false,
+  "include_docker": false,
+
+  "include_services": false,
+  "include_sso": false,
+
+  "include_backend_compatibility": false,
+  "include_internet_dependent": false,
+  "include_ssh": false,
+
+  "include_privileged_container_support": false,
+  "include_route_services": false,
+  "include_routing": false,
+  "include_security_groups": false
 }
