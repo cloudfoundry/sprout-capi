@@ -208,7 +208,7 @@ node_attributes:
       - ack
       - aria2
       - awscli
-      - bosh-init
+      - cloudfoundry/tap/bosh-init
       - cf-cli
       - direnv
       - dishy
