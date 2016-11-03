@@ -99,7 +99,7 @@ function recreate_bosh_lite() {
     bosh -t lite upload release
     bosh -t lite -n deploy
 
-    bosh_lite_install_release "garden-linux" "cloudfoundry/garden-linux-release"
+    bosh_lite_install_release "garden-runc" "cloudfoundry/garden-runc-release"
     bosh_lite_install_release "etcd" "cloudfoundry-incubator/etcd-release"
     bosh_lite_install_release "cflinuxfs2-rootfs" "cloudfoundry/cflinuxfs2-rootfs-release"
 
