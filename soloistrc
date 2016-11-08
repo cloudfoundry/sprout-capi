@@ -26,6 +26,7 @@ recipes:
 - sprout-git::default_editor
 - sprout-git::git_duet
 - sprout-git::projects
+- sprout-git::git_hooks_core
 
 # development (rails)
 - sprout-ruby
@@ -43,17 +44,18 @@ recipes:
 - capi
 - capi::sync
 - capi::use_ruby_direnv
-- capi::git_hooks
 
 node_attributes:
   sprout:
     git:
+      hooks:
+        repository: 'https://github.com/pivotal-cf-experimental/git-hooks-core.git'
       domain: pivotal.io
       aliases:
         - ci duet-commit
       global_config:
         'url."git@github.com:".pushInsteadOf': 'https://github.com/'
-        'submodule.fetchJobs': 16
+        'submodule.fetchJobs': "16"
       authors:
         - initials: as
           name: Aakash Shah
@@ -189,20 +191,6 @@ node_attributes:
     packages:
       - go-plus
       - gorename
-  git_hooks:
-    allowed:
-      - '0\.[A-Z0-9]{20}'
-    install_dirs:
-      - workspace/capi-checkman
-      - workspace/capi-ci
-      - workspace/capi-dockerfiles
-      - workspace/cf-release/src/capi-release
-      - workspace/cf-release/src/capi-release/src/cloud_controller_ng
-      - workspace/cf-release/src/github.com/cloudfoundry/cf-acceptance-tests
-      - workspace/cf-release/src/capi-release/src/code.cloudfoundry.org/cc-uploader
-      - workspace/cf-release/src/capi-release/src/code.cloudfoundry.org/nsync
-      - workspace/cf-release/src/capi-release/src/code.cloudfoundry.org/stager
-      - workspace/cf-release/src/capi-release/src/code.cloudfoundry.org/tps
   homebrew:
     formulas:
       - ack
