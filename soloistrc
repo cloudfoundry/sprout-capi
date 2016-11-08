@@ -19,6 +19,7 @@ recipes:
 
 - sprout-chruby
 - capi::cf_cli
+- capi::cred_alert_cli
 
 # development (general)
 - sprout-base::workspace_directory
@@ -110,6 +111,8 @@ node_attributes:
           update: true
         - url: https://github.com/cloudfoundry/capi-ci
           update: true
+    cred_alert:
+      download_url: https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin
     terminal:
       default_profile: 'Pro'
     settings:
