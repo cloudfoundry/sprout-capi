@@ -52,8 +52,24 @@ node_attributes:
       hooks:
         repository: 'https://github.com/pivotal-cf-experimental/git-hooks-core.git'
       domain: pivotal.io
-      aliases:
+      base_aliases:
         - ci duet-commit
+        - st status
+        - di diff
+        - co checkout
+        - br branch
+        - sta stash
+        - llog "log --date=local"
+        - flog "log --pretty=fuller --decorate"
+        - lg \"#{lg_alias}\"
+        - lol "log --graph --decorate --oneline"
+        - lola "log --graph --decorate --oneline --all"
+        - blog "log origin/master... --left-right"
+        - ds "diff --staged"
+        - fixup "commit --fixup"
+        - squash "commit --squash"
+        - unstage "reset HEAD"
+        - rum "rebase master@{u}
       global_config:
         'url."git@github.com:".pushInsteadOf': 'https://github.com/'
         'submodule.fetchJobs': "16"
