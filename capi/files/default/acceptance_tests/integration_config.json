@@ -10,7 +10,7 @@
   "include_apps": true,
   "include_v3": true,
   "include_detect": true,
-  "include_tasks": false,
+  "include_tasks": true,
   "include_docker": false,
 
   "include_services": true,
