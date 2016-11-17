@@ -175,6 +175,8 @@ node_attributes:
         url: https://bosh.xena.cf-app.com
       - name: arya
         url: https://bosh.arya.cf-app.com
+      - name: ci
+        url: https://bosh.capi.ci.cf-app.com
 
   versions:
     bash_it: HEAD
