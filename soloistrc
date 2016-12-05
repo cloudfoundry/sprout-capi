@@ -104,6 +104,9 @@ node_attributes:
         - initials: gc
           name: Greg Cobb
           username: gcobb
+        - initials: ep
+          name: Eric Promislow
+          email: eric.promislow@gmail.com
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/bosh-lite
