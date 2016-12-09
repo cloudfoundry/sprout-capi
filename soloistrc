@@ -222,6 +222,7 @@ node_attributes:
       - awscli
       - cloudfoundry/tap/bosh-init
       - cf-cli
+      - consul
       - direnv
       - dishy
       - fasd
