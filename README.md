@@ -40,6 +40,13 @@ If you receive errors like this:
 then try downgrading those errors like this:
 
     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle
+    
+If you have trouble with Postgres, you may have incompatible versions of Postgres already installed on your machine. You can confirm this by looking at `/usr/local/var/postgres/server.log`. Most likely, you'll have to remove any sign of existing postgres versions:
+    
+    rm -rf /usr/local/var/postgres/*
+    rmdir /usr/local/var/postgres
+    brew uninstall postgres
+    brew update && brew install postgres
 
 ### 4. Run soloist
 
