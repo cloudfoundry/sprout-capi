@@ -1,0 +1,6 @@
+" vimrc.local
+" " These commands will be run after all other configuration and plugins
+
+colorscheme gruvbox
+
+au FileType yaml set fdm=indent

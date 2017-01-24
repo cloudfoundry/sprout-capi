@@ -23,3 +23,9 @@ execute 'yes "" | ./update --non-interactive' do
   cwd dotvim
   user node['sprout']['user']
 end
+
+template ::File.join(node['sprout']['home'], '.vimrc.local') do
+  source 'vim_luan/vimrc.local'
+  owner node['sprout']['user']
+  mode "0755"
+end
