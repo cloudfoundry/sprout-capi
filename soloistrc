@@ -208,6 +208,7 @@ node_attributes:
         - bash_it/custom/capi-env.bash
         - bash_it/custom/always_duet.bash
         - bash_it/custom/recreate_bosh_lite.bash
+        - bash_it/custom/recreate_gosh_lite.bash
         - bash_it/custom/setup-direnv.bash
         - bash_it/custom/fast_bosh.bash
         - bash_it/custom/notify.bash
