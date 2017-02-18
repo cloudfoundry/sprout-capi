@@ -134,6 +134,8 @@ node_attributes:
           update: true
         - url: https://github.com/cloudfoundry/capi-ci
           update: true
+        - url: https://github.com/cloudfoundry/cf-deployment
+        - url: https://github.com/cloudfoundry/bosh-deployment
     cred_alert:
       download_url: https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin
     terminal:
@@ -226,6 +228,7 @@ node_attributes:
       - aria2
       - awscli
       - cloudfoundry/tap/bosh-init
+      - cloudfoundry/tap/bosh-cli
       - cf-cli
       - consul
       - direnv

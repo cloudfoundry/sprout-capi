@@ -54,7 +54,7 @@ recreate_gosh_lite() {
     mkdir -p "${state_dir}"
 
     pushd "${state_dir}" > /dev/null
-      gosh interpolate "${deployment_repo}/bosh.yml" \
+      bosh2 interpolate "${deployment_repo}/bosh.yml" \
         -o "${deployment_repo}/virtualbox/cpi.yml" \
         -o "${deployment_repo}/virtualbox/outbound-network.yml" \
         -o "${deployment_repo}/bosh-lite.yml" \
@@ -70,14 +70,14 @@ recreate_gosh_lite() {
 
       if [ -f "${state_dir}/state.json" ]; then
         echo -e "\n${yellow}Destroying current Bosh-Lite...${nc}"
-        gosh delete-env \
+        bosh2 delete-env \
            --state=./state.json \
            --vars-store ./creds.yml \
           ./director.yml
       fi
 
       echo -e "\n${green}Deploying new Bosh-Lite...${nc}"
-      gosh create-env \
+      bosh2 create-env \
          --state=./state.json \
          --vars-store ./creds.yml \
         ./director.yml
