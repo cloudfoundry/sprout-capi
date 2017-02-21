@@ -50,6 +50,10 @@ recreate_gosh_lite() {
         "${deployment_repo}"
     fi
 
+    pushd $deployment_repo
+      git pull
+    popd
+
     state_dir="$HOME/deployments/vbox"
     mkdir -p "${state_dir}"
 
