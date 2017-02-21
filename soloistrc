@@ -77,9 +77,6 @@ node_attributes:
         - initials: as
           name: Aakash Shah
           username: ashah
-        - initials: uu
-          name: Utako Ueda
-          username: uueda
         - initials: zr
           name: Zach Robinson
           username: zrobinson
