@@ -136,6 +136,8 @@ node_attributes:
           update: true
         - url: https://github.com/cloudfoundry/cf-deployment
         - url: https://github.com/cloudfoundry/bosh-deployment
+        - url: https://github.com/cloudfoundry/sync-integration-tests
+          workspace_path: ~/go/src/github.com/cloudfoundry/
     cred_alert:
       download_url: https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin
     terminal:
