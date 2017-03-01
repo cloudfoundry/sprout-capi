@@ -77,15 +77,6 @@ node_attributes:
         - initials: as
           name: Aakash Shah
           username: ashah
-        - initials: zr
-          name: Zach Robinson
-          username: zrobinson
-        - initials: sl
-          name: Simon Leung
-          email: leungs@us.ibm.com
-        - initials: rr
-          name: Rizwan Reza
-          username: rreza
         - initials: th
           name: Tim Hausler
           username: thausler
@@ -95,9 +86,6 @@ node_attributes:
         - initials: jb
           name: Jonathan Berkhahn
           email: jaberkha@us.ibm.com
-        - initials: ls
-          name: Luan Santos
-          username: lsantos
         - initials: gc
           name: Greg Cobb
           username: gcobb
@@ -107,6 +95,9 @@ node_attributes:
         - initials: lf
           name: Lyle Franklin
           username: lfranklin
+        - initials: sc
+          name: Sandy Cash
+          email: scarlet.tanager@gmail.com
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/bosh-lite
