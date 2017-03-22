@@ -83,9 +83,9 @@ node_attributes:
         - initials: mx
           name: Michael Xu
           username: mxu
-        - initials: jb
-          name: Jonathan Berkhahn
-          email: jaberkha@us.ibm.com
+        - initials: js
+          name: Jen Spinney
+          email: jennifer.spinney@suse.com
         - initials: gc
           name: Greg Cobb
           username: gcobb
