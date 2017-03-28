@@ -57,12 +57,24 @@ recreate_gosh_lite() {
     state_dir="$HOME/deployments/vbox"
     mkdir -p "${state_dir}"
 
+    cat << EOF > "${state_dir}/more_memory.yml"
+---
+# increase RAM to give better CATs performance
+- type: replace
+  path: /resource_pools/name=vms/cloud_properties?
+  value:
+    cpus: 2
+    memory: 8192
+    ephemeral_disk: 16_384
+EOF
+
     pushd "${state_dir}" > /dev/null
       bosh2 interpolate "${deployment_repo}/bosh.yml" \
         -o "${deployment_repo}/virtualbox/cpi.yml" \
         -o "${deployment_repo}/virtualbox/outbound-network.yml" \
         -o "${deployment_repo}/bosh-lite.yml" \
         -o "${deployment_repo}/bosh-lite-runc.yml" \
+        -o "${state_dir}/more_memory.yml" \
         -v director_name="Bosh Lite Director" \
         -v admin_password="admin" \
         -v internal_ip=192.168.50.4 \
