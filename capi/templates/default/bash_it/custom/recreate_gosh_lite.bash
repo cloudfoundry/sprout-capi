@@ -10,23 +10,16 @@ recreate_gosh_lite() {
     red='\033[31m'
     nc='\033[0m'
 
-    update=false
-    if [[ "$1" == "-u" ]]; then
-      update=true
+    hour="$(date +%H)"
+    if [ "${hour}" -lt 11 ]; then
+      greeting="morning"
+    elif [ "${hour}" -lt 17 ]; then
+      greeting="afternoon"
+    else
+      greeting="evening"
     fi
-
-		hour="$(date +%H)"
-		if [ "${hour}" -lt 11 ]; then
-			greeting="morning"
-		elif [ "${hour}" -lt 17 ]; then
-			greeting="afternoon"
-		else
-			greeting="evening"
-		fi
     echo -e "\n${green}Good ${greeting}, let's get you a new bosh-lite!${nc}"
 
-    cf_release_dir="$HOME/workspace/cf-release"
-    diego_release_dir="$HOME/workspace/diego-release"
     old_bosh_lite_dir="$HOME/workspace/bosh-lite"
 
     if [ -d "${old_bosh_lite_dir}/.vagrant" ]; then
@@ -50,9 +43,9 @@ recreate_gosh_lite() {
         "${deployment_repo}"
     fi
 
-    pushd $deployment_repo
+    pushd "${deployment_repo}" > /dev/null
       git pull
-    popd
+    popd > /dev/null
 
     state_dir="$HOME/deployments/vbox"
     mkdir -p "${state_dir}"
@@ -77,7 +70,7 @@ EOF
         -o "${state_dir}/more_memory.yml" \
         -v director_name="Bosh Lite Director" \
         -v admin_password="admin" \
-        -v internal_ip=192.168.50.4 \
+        -v internal_ip=192.168.50.6 \
         -v internal_gw=192.168.50.1 \
         -v internal_cidr=192.168.50.0/24 \
         -v network_name=vboxnet0 \
@@ -99,38 +92,13 @@ EOF
         ./director.yml
 
       echo -e "\n${green}Setting up route table entries...${nc}"
-      sudo route delete -net 10.244.0.0/16 192.168.50.4
-      sudo route add -net 10.244.0.0/16 192.168.50.4
+      sudo route delete -net 10.244.0.0/16 192.168.50.6
+      sudo route add -net 10.244.0.0/16 192.168.50.6
 
       echo -e "\n${green}Uploading stemcell...${nc}"
-      bosh target 192.168.50.4 lite
+      bosh target 192.168.50.6 lite
       bosh upload stemcell \
         https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent
-
-      if $update; then
-        echo -e "\n${green}Updating source for cf-release...${nc}"
-        "${cf_release_dir}/scripts/update"
-      fi
-
-      echo -e "\n${green}Deploying cf-release...${nc}"
-      "${cf_release_dir}/scripts/deploy-dev-release-to-bosh-lite"
-
-
-      if $update; then
-        echo -e "\n${green}Updating source for diego-release...${nc}"
-        "${diego_release_dir}/scripts/update"
-      fi
-
-      echo -e "\n${green}Deploying diego-release...${nc}"
-      pushd "${diego_release_dir}" > /dev/null
-        bosh --parallel 10 sync blobs
-        bosh upload release https://bosh.io/d/github.com/cloudfoundry/garden-runc-release
-        bosh upload release https://bosh.io/d/github.com/cloudfoundry-incubator/etcd-release
-        bosh upload release https://bosh.io/d/github.com/cloudfoundry/cflinuxfs2-rootfs-release
-
-        ./scripts/deploy
-        bosh deployment "${cf_release_dir}/bosh-lite/deployments/cf.yml"
-      popd > /dev/null
     popd > /dev/null
 
     echo -e "\n${green}Another successful deployment, have a nice day!${nc}"
