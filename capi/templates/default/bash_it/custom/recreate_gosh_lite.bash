@@ -95,9 +95,14 @@ EOF
       sudo route delete -net 10.244.0.0/16 192.168.50.6
       sudo route add -net 10.244.0.0/16 192.168.50.6
 
+      echo -e "\n${green}Setting up vbox alias...${nc}"
+      bosh2 -e 192.168.50.6 alias-env vbox \
+        --ca-cert="$( bosh2 int ./creds.yml --path /director_ssl/ca )" \
+        --client=admin \
+        --client-secret=admin
+
       echo -e "\n${green}Uploading stemcell...${nc}"
-      bosh target 192.168.50.6 lite
-      bosh upload stemcell \
+      bosh2 -e vbox upload-stemcell \
         https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent
     popd > /dev/null
 
