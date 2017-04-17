@@ -77,9 +77,9 @@ node_attributes:
         - initials: as
           name: Aakash Shah
           username: ashah
-        - initials: th
-          name: Tim Hausler
-          username: thausler
+        - initials: td
+          name: Tim Downey
+          username: tdowney
         - initials: mx
           name: Michael Xu
           username: mxu
@@ -95,6 +95,9 @@ node_attributes:
         - initials: lf
           name: Lyle Franklin
           username: lfranklin
+        - initials: mr
+          name: Matt Royal
+          username: mroyal
         - initials: sc
           name: Sandy Cash
           email: scarlet.tanager@gmail.com
