@@ -5,13 +5,43 @@ recreate_gosh_lite() {
     set -e
     sudo true
 
+    usage() {
+      >&2 cat <<EOF
+SYNOPSIS:
+  Recreates your local virtualbox bosh-lite Director.
+OPTIONAL ARGUMENTS:
+  --keep-disk  Re-attach the existing Director's disk to new VM.
+  -h           Prints this usage text.
+EOF
+      exit 1
+    }
+
     green='\033[32m'
     yellow='\033[33m'
     red='\033[31m'
     nc='\033[0m'
 
+    keep_disk=false
+    set +u
+    while true ; do
+      if [ "$#" = 0 ]; then
+        break
+      fi
+      case "$1" in
+        --keep-disk) keep_disk=true; shift ;;
+        -h)
+          usage
+          ;;
+        *)
+          >&2 echo -e "${red}Unrecognized argument '$1'!${nc}"
+          usage
+          ;;
+      esac
+    done
+    set -u
+
     hour="$(date +%H)"
-    if [ "${hour}" -lt 11 ]; then
+    if [ "${hour}" -lt 12 ]; then
       greeting="morning"
     elif [ "${hour}" -lt 17 ]; then
       greeting="afternoon"
@@ -53,20 +83,22 @@ recreate_gosh_lite() {
     cat << EOF > "${state_dir}/more_memory.yml"
 ---
 # increase RAM to give better CATs performance
+# increase ephemeral_disk to untar cf-release without running out of space
 - type: replace
   path: /resource_pools/name=vms/cloud_properties?
   value:
     cpus: 2
     memory: 8192
-    ephemeral_disk: 16_384
+    ephemeral_disk: 32_000
 EOF
 
     pushd "${state_dir}" > /dev/null
-      bosh2 interpolate "${deployment_repo}/bosh.yml" \
+      bosh interpolate "${deployment_repo}/bosh.yml" \
         -o "${deployment_repo}/virtualbox/cpi.yml" \
         -o "${deployment_repo}/virtualbox/outbound-network.yml" \
         -o "${deployment_repo}/bosh-lite.yml" \
         -o "${deployment_repo}/bosh-lite-runc.yml" \
+        -o "${deployment_repo}/jumpbox-user.yml" \
         -o "${state_dir}/more_memory.yml" \
         -v director_name="Bosh Lite Director" \
         -v admin_password="admin" \
@@ -77,16 +109,16 @@ EOF
         -v outbound_network_name=NatNetwork \
         > ./director.yml
 
-      if [ -f "${state_dir}/state.json" ]; then
+      if [ -f "${state_dir}/state.json" && "${keep_disk}" = "false" ]; then
         echo -e "\n${yellow}Destroying current Bosh-Lite...${nc}"
-        bosh2 delete-env \
+        bosh delete-env \
            --state=./state.json \
            --vars-store ./creds.yml \
           ./director.yml
       fi
 
       echo -e "\n${green}Deploying new Bosh-Lite...${nc}"
-      bosh2 create-env \
+      bosh create-env \
          --state=./state.json \
          --vars-store ./creds.yml \
         ./director.yml
@@ -96,13 +128,13 @@ EOF
       sudo route add -net 10.244.0.0/16 192.168.50.6
 
       echo -e "\n${green}Setting up vbox alias...${nc}"
-      bosh2 -e 192.168.50.6 alias-env vbox \
-        --ca-cert="$( bosh2 int ./creds.yml --path /director_ssl/ca )" \
+      bosh -e 192.168.50.6 alias-env vbox \
+        --ca-cert="$( bosh int ./creds.yml --path /director_ssl/ca )" \
         --client=admin \
         --client-secret=admin
 
       echo -e "\n${green}Uploading stemcell...${nc}"
-      bosh2 -e vbox upload-stemcell \
+      bosh -e vbox upload-stemcell \
         https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent
     popd > /dev/null
 
