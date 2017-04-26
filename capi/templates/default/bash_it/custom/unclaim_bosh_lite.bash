@@ -39,7 +39,6 @@ function unclaim_bosh_lite() {
     for env in "$@"; do
       unclaim $env
     done
-
   )
 
   unset BOSH_CA_CERT BOSH_CLIENT BOSH_CLIENT_SECRET BOSH_ENVIRONMENT \
