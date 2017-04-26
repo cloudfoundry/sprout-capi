@@ -31,7 +31,7 @@ function unclaim_bosh_lite() {
 
       newfile=`echo $file | sed -e 's/claimed/unclaimed/'`
       git mv $file $newfile
-      git ci -m"manually unclaim $env on ${HOSTNAME} [nostory]" --no-verify
+      git ci --quiet -m"manually unclaim $env on ${HOSTNAME} [nostory]" --no-verify
       echo "Pushing the unclaim commit to $( basename $PWD )..."
       git push --quiet
     }
