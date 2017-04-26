@@ -109,7 +109,7 @@ EOF
         -v outbound_network_name=NatNetwork \
         > ./director.yml
 
-      if [ -f "${state_dir}/state.json" && "${keep_disk}" = "false" ]; then
+      if [[ -f "${state_dir}/state.json" && "${keep_disk}" = "false" ]]; then
         echo -e "\n${yellow}Destroying current Bosh-Lite...${nc}"
         bosh delete-env \
            --state=./state.json \
