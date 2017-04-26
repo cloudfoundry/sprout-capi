@@ -1,5 +1,7 @@
 function claim_bosh_lite() {
-  (
+  env_file=$(
+    set -e
+
     function msg {
       echo -e $1
     }
@@ -53,24 +55,21 @@ function claim_bosh_lite() {
       msg "Done\n"
     }
 
-    env_file=$(
-      set -e
-      >&2 cd ~/workspace/capi-ci-private
-      >&2 claim_random_environment $requested_input
+    >&2 cd ~/workspace/capi-ci-private
+    >&2 claim_random_environment $requested_input
 
-      realpath $newfile
-    )
-
-    if [ "$?" == 0 ]; then
-      source "${env_file}"
-
-      env_name="$( basename "${env_file}" )"
-      msg "Now targeting Director at \`${BOSH_ENVIRONMENT}\`"
-      msg "Your CF system_domain is \`${BOSH_LITE_DOMAIN}\`"
-      msg "To target that environment in other sessions, run \`source $( realpath ${env_file} )\`"
-      msg "To unclaim the environment, run \`unclaim_bosh_lite ${env_name}\`"
-    fi
+    realpath $newfile
   )
+
+  if [ "$?" == 0 ]; then
+    source "${env_file}"
+
+    env_name="$( basename "${env_file}" )"
+    echo -e "Now targeting Director at \`${BOSH_ENVIRONMENT}\`"
+    echo -e "Your CF system_domain is \`${BOSH_LITE_DOMAIN}\`"
+    echo -e "To target that environment in other sessions, run \`source ${env_file}\`"
+    echo -e "To unclaim the environment, run \`unclaim_bosh_lite ${env_name}\`"
+  fi
 }
 
 export -f claim_bosh_lite
