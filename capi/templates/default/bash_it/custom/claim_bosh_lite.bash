@@ -12,6 +12,8 @@ function claim_bosh_lite() {
   function claim_random_environment() {
     pool="bosh-lites"
 
+    git pull --rebase --quiet
+
     for f in ./${pool}/unclaimed/*; do
       test -f "$f" || continue
 
@@ -26,8 +28,6 @@ function claim_bosh_lite() {
 
   function claim_specific_environment() {
     env=$1
-
-    git pull --rebase --quiet
 
     file=`find . -name $env`
 
