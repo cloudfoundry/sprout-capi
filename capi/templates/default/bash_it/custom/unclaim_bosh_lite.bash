@@ -1,6 +1,10 @@
 function unclaim_bosh_lite() {
   (
+    set -e
     cd ~/workspace/capi-env-pool
+
+    working_pool="bosh-lites"
+    broken_pool="broken-bosh-lites"
 
     if [ $# -eq 0 ]; then
       echo 'Usage: $0 env_name'
@@ -9,30 +13,20 @@ function unclaim_bosh_lite() {
 
     git pull -r --quiet
 
-    function unclaim {
+    function mark_broken {
       env=$1
-      file=`find . -name $env`
+      file=`find ${working_pool} -name $env`
 
       if [ "$file" == "" ]; then
-        echo $env does not exist
+        echo "$env does not exist in ${working_pool}"
         return 1
       fi
 
-      set +e
-      file_unclaimed=`echo $file | grep unclaim`
-      set -e
+      read -p "Hit enter to release $env "
 
-      if [ $file_unclaimed ]; then
-        echo $env is not claimed
-        return 1
-      fi
-
-      read -p "Hit enter to unclaim $env "
-
-      newfile=`echo $file | sed -e 's/claimed/unclaimed/'`
-      git mv $file $newfile
-      git ci --quiet -m"manually unclaim $env on ${HOSTNAME} [nostory]" --no-verify
-      echo "Pushing the unclaim commit to $( basename $PWD )..."
+      git mv $file "${broken_pool}/unclaimed/"
+      git ci --quiet -m"releasing $env on ${HOSTNAME} [nostory]" --no-verify
+      echo "Pushing the release commit to $( basename $PWD )..."
       git push --quiet
 
       env_ssh_key_path="$HOME/workspace/capi-env-pool/keypairs/${env}.pem"
@@ -40,9 +34,28 @@ function unclaim_bosh_lite() {
       rm -f "${env_ssh_key_path}"
     }
 
+    function trigger_cleanup_job {
+      echo "Triggering delete-bosh-lite job..."
+
+      set +e
+      fly -t capi trigger-job -j bosh-lite/delete-bosh-lite
+      exit_code="$?"
+      set -e
+
+      if [ "${exit_code}" != 0 ]; then
+        fly -t capi login
+        fly -t capi trigger-job -j bosh-lite/delete-bosh-lite
+      fi
+
+      echo "Triggering create-bosh-lite job..."
+      fly -t capi trigger-job -j bosh-lite/create-bosh-lite
+    }
+
     for env in "$@"; do
-      unclaim $env
+      mark_broken $env
     done
+
+    trigger_cleanup_job
   )
 
   unset BOSH_CA_CERT BOSH_CLIENT BOSH_CLIENT_SECRET BOSH_ENVIRONMENT \

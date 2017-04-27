@@ -216,7 +216,6 @@ node_attributes:
         - bash_it/custom/pullify.bash
         - bash_it/custom/claim_bosh_lite.bash
         - bash_it/custom/unclaim_bosh_lite.bash
-        - bash_it/custom/mark_broken_bosh_lite.bash
   atom:
     packages:
       - go-plus
