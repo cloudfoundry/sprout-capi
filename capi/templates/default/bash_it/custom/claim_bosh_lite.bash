@@ -55,7 +55,7 @@ function claim_bosh_lite() {
       msg "Done\n"
     }
 
-    >&2 cd ~/workspace/capi-ci-private
+    >&2 cd ~/workspace/capi-env-pool
     >&2 claim_random_environment $requested_input
 
     realpath $newfile
