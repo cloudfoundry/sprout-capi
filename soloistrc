@@ -211,7 +211,7 @@ node_attributes:
         - bash_it/custom/setup-direnv.bash
         - bash_it/custom/fast_bosh.bash
         - bash_it/custom/notify.bash
-        - bash_it/custom/fix_commiter.bash
+        - bash_it/custom/fix_committer.bash
         - bash_it/custom/delete_orgs.bash
         - bash_it/custom/pullify.bash
         - bash_it/custom/claim_bosh_lite.bash

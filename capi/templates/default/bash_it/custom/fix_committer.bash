@@ -1,4 +1,4 @@
-fixcommiter() {
+fixcommitter() {
   committer=$(git show HEAD -s --pretty="tformat:%b" | grep Signed-off | cut -d: -f2)
   if git branch -a --contains=HEAD | grep remotes; then
       # return immediately if the current commit has been pushed remotely
@@ -22,4 +22,4 @@ fixcommiter() {
   git commit -n --amend -CHEAD
 }
 
- export -f fixcommiter
+ export -f fixcommitter
