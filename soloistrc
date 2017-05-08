@@ -77,6 +77,9 @@ node_attributes:
         - initials: as
           name: Aakash Shah
           username: ashah
+        - initials: an
+          name: Annie Sing
+          username: asing
         - initials: td
           name: Tim Downey
           username: tdowney
