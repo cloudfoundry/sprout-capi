@@ -49,6 +49,14 @@ function claim_bosh_lite() {
       newfile=`echo ${file} | sed -e 's/unclaimed/claimed/'`
 
       git mv $file $newfile
+
+      source "${newfile}"
+      env_ssh_key_path="$HOME/workspace/capi-env-pool/keypairs/${env}.pem"
+      echo "$BOSH_GW_PRIVATE_KEY_CONTENTS" > "${env_ssh_key_path}"
+      chmod 0400 "${env_ssh_key_path}"
+      echo "export BOSH_GW_PRIVATE_KEY='${env_ssh_key_path}'" >> "${newfile}"
+      git add "${newfile}"
+
       git ci --quiet --message "manually claim ${env} on ${HOSTNAME} [nostory]" --no-verify
       msg "Pushing reservation to $( basename $PWD )..."
       git push --quiet
@@ -65,11 +73,6 @@ function claim_bosh_lite() {
     source "${env_file}"
 
     env_name="$( basename "${env_file}" )"
-    env_ssh_key_path="$HOME/workspace/capi-env-pool/keypairs/${env_name}.pem"
-    echo "$BOSH_GW_PRIVATE_KEY_CONTENTS" > "${env_ssh_key_path}"
-    chmod 0400 "${env_ssh_key_path}"
-    export BOSH_GW_PRIVATE_KEY="${env_ssh_key_path}"
-
     echo -e "Now targeting Director at \`${BOSH_ENVIRONMENT}\`"
     echo -e "Your CF system_domain is \`${BOSH_LITE_DOMAIN}\`"
     echo -e "To target that environment in other sessions, run \`source ${env_file}\`"
