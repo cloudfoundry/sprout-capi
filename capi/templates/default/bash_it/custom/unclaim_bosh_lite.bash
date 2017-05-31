@@ -1,4 +1,9 @@
 function unclaim_bosh_lite() {
+
+  # ensures we don't remove the current working directory
+  if [[ "$PWD" == *capi-env-pool* ]]; then
+    cd "$HOME/workspace/capi-env-pool"
+  fi
   (
     set -e
     cd ~/workspace/capi-env-pool
@@ -25,13 +30,10 @@ function unclaim_bosh_lite() {
       read -p "Hit enter to release $env "
 
       git mv $file "${broken_pool}/unclaimed/"
+      git rm -rf "${env}" && rm -rf "${env}"
       git ci --quiet -m"releasing $env on ${HOSTNAME} [nostory]" --no-verify
       echo "Pushing the release commit to $( basename $PWD )..."
       git push --quiet
-
-      env_ssh_key_path="$HOME/workspace/capi-env-pool/keypairs/${env}.pem"
-      echo "Removing BOSH SSH file [${env_ssh_key_path}]..."
-      rm -f "${env_ssh_key_path}"
     }
 
     function trigger_cleanup_job {
