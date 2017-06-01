@@ -99,9 +99,12 @@ EOF
         -o "${deployment_repo}/bosh-lite.yml" \
         -o "${deployment_repo}/bosh-lite-runc.yml" \
         -o "${deployment_repo}/jumpbox-user.yml" \
+        -o "${deployment_repo}/uaa.yml" \
+        -o "${deployment_repo}/credhub.yml" \
         -o "${state_dir}/more_memory.yml" \
-        -v director_name="Bosh Lite Director" \
+        -v director_name="bosh-lite" \
         -v admin_password="admin" \
+        -v credhub_cli_password="admin" \
         -v internal_ip=192.168.50.6 \
         -v internal_gw=192.168.50.1 \
         -v internal_cidr=192.168.50.0/24 \
