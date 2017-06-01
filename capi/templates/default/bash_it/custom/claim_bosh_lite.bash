@@ -84,6 +84,7 @@ echo "\${default_cmd}"
 
 latest_capi_cmd="\${default_cmd} -o ~/workspace/capi-ci/cf-deployment-operations/use-latest-capi.yml"
 echo -e "${green}\n## Deploy CF with latest CAPI release ##${nc}"
+echo "upload-capi-release"
 echo "\${latest_capi_cmd}"
 
 bypass_bridge_cmd="\${default_cmd} -o ~/workspace/cf-deployment/operations/bypass-cc-bridge.yml"
