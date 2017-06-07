@@ -12,7 +12,7 @@ function unclaim_bosh_lite() {
     broken_pool="broken-bosh-lites"
 
     if [ $# -eq 0 ]; then
-      echo 'Usage: $0 env_name'
+      echo "Usage: $0 env_name"
       return 1
     fi
 
@@ -20,44 +20,31 @@ function unclaim_bosh_lite() {
 
     function mark_broken {
       env=$1
-      file=`find ${working_pool} -name $env`
+      file="$(find "${working_pool}" -name "${env}")"
 
       if [ "$file" == "" ]; then
         echo "$env does not exist in ${working_pool}"
         return 1
       fi
 
-      read -p "Hit enter to release $env "
+      read -r -p "Hit enter to release ${env} "
 
-      git mv $file "${broken_pool}/unclaimed/"
-      git rm -rf "${env}" && rm -rf "${env}"
+      git mv "${file}" "${broken_pool}/unclaimed/"
+      if [ -d "${env}" ]; then
+        git rm -rf "${env}" && rm -rf "${env}"
+      fi
+
+      # trigger destroy-bosh-lite job
+      date +%s > .trigger-bosh-lites-destroy && git add .trigger-bosh-lites-destroy
+
       git ci --quiet -m"releasing $env on ${HOSTNAME} [nostory]" --no-verify
-      echo "Pushing the release commit to $( basename $PWD )..."
+      echo "Pushing the release commit to $( basename "$PWD" )..."
       git push --quiet
     }
 
-    function trigger_cleanup_job {
-      echo "Triggering delete-bosh-lite job..."
-
-      set +e
-      fly -t capi trigger-job -j bosh-lite/delete-bosh-lite
-      exit_code="$?"
-      set -e
-
-      if [ "${exit_code}" != 0 ]; then
-        fly -t capi login
-        fly -t capi trigger-job -j bosh-lite/delete-bosh-lite
-      fi
-
-      echo "Triggering create-bosh-lite job..."
-      fly -t capi trigger-job -j bosh-lite/create-bosh-lite
-    }
-
     for env in "$@"; do
-      mark_broken $env
+      mark_broken "${env}"
     done
-
-    trigger_cleanup_job
   )
 
   unset BOSH_CA_CERT BOSH_CLIENT BOSH_CLIENT_SECRET BOSH_ENVIRONMENT \
