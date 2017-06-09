@@ -106,6 +106,9 @@ echo "credhub get --name '/bosh-lite/cf/cf_admin_password' --output-json | jq -r
 echo -e "${green}\n## Unclaim this environment ##${nc}"
 echo "unclaim_bosh_lite ${env_name}"
 
+echo -e "${green}\n## Short circuit CC traffic into local process ##${nc}"
+echo "~/workspace/capi-release/src/cloud_controller_ng/scripts/short-circuit-cc"
+
 echo -e "${green}\n## Print this help text ##${nc}"
 echo ". .envrc"
 
