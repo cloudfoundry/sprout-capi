@@ -242,7 +242,6 @@ node_attributes:
       - jq
       - node
       - pstree
-      - qt
       - s3cmd
       - ssh-copy-id
       - tig
