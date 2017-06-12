@@ -45,6 +45,7 @@ recipes:
 - capi
 - capi::sync
 - capi::use_ruby_direnv
+- capi::resprout_cron
 
 node_attributes:
   sprout:
