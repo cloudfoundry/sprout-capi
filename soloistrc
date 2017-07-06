@@ -230,6 +230,7 @@ node_attributes:
       - cloudfoundry/tap/bosh-cli
       - cf-cli
       - consul
+      - cloudfoundry/tap/credhub-cli
       - direnv
       - dishy
       - fasd
