@@ -117,6 +117,10 @@ node_attributes:
           post_clone_commands:
             - ./scripts/update
             - ./scripts/setup-git-hooks
+        - url: https://github.com/cloudfoundry/capi-release
+          branch: develop
+          post_clone_commands:
+            - ./scripts/update
         - url: https://github.com/cloudfoundry/diego-release
           branch: develop
           post_clone_commands:
