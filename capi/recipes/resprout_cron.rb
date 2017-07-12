@@ -1,6 +1,5 @@
 cron 'resprout-cron' do
   time :daily
   mailto nil
-  environment "PATH" => "/usr/local/bin:/usr/bin:/bin"
-  command "(launchctl asuser $(id -u #{node['sprout']['user']}) sudo -i -u #{node['sprout']['user']} 'cd '#{node['sprout']['home']}/workspace/sprout-capi' && git pull && soloist') &> /tmp/sprout.log"
+  command "(cd '#{node['sprout']['home']}/workspace/sprout-capi' && sudo -u #{node['sprout']['user']} git pull && bash -l -c 'cd '#{node['sprout']['home']}/workspace/sprout-capi' && HOME='#{node['sprout']['home']}' SUDO_USER='#{node['sprout']['user']}' launchctl asuser $(id -u #{node['sprout']['user']}) soloist') &> /tmp/sprout.log"
 end
