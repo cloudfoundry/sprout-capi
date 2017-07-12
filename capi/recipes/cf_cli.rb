@@ -19,6 +19,7 @@ end
 execute 'install cf plugin repo' do
   command 'cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org'
   user node['sprout']['user']
+  not_if 'cf list-plugin-repos | grep -q CF-Community'
 end
 
 execute 'install cf cli Diego-Enabler plugin' do
