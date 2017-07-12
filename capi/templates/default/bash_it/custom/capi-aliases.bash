@@ -9,7 +9,7 @@ alias qnd-deploy-diego='(cd ~/workspace/diego-release && bosh --parallel 10 sync
 alias qnd-deploy-manifest='(cd ~/workspace/cf-release && scripts/deploy-dev-release-to-bosh-lite)'
 
 # Deploying (bosh2 + cf-deployment)
-alias upload-capi-release='(cd ~/workspace/capi-release && bosh sync-blobs && bosh1 create release --force --name capi && bosh upload-release --rebase)'
+alias upload-capi-release='(cd ~/workspace/capi-release && bosh sync-blobs && bosh create-release --force --name capi && bosh upload-release --rebase)'
 
 # PSQL
 alias psql-bosh-lite='psql -h 10.244.0.30 -p 5524 -U ccadmin ccdb'
