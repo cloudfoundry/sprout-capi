@@ -13,7 +13,7 @@ function claim_bosh_lite() {
     function claim_random_environment() {
       pool="bosh-lites"
 
-      git pull --rebase --quiet
+      git pull --rebase --quiet --no-verify
 
       for f in ./${pool}/unclaimed/*; do
         test -f "$f" || continue
