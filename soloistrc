@@ -84,9 +84,9 @@ node_attributes:
         - initials: td
           name: Tim Downey
           username: tdowney
-        - initials: mx
-          name: Michael Xu
-          username: mxu
+        - initials: lc
+          name: Lisa Cho
+          username: lcho
         - initials: js
           name: Jen Spinney
           email: jennifer.spinney@suse.com
