@@ -206,6 +206,7 @@ node_attributes:
         - git
         - ssh
       plugins:
+        - base
         - ssh
         - git
         - fzf
