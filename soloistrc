@@ -102,10 +102,6 @@ node_attributes:
         - initials: mr
           name: Matt Royal
           username: mroyal
-        - initials: ts
-          name: Tushar Singal
-          username: tusing
-          email: tusharsingal@gmail.com
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/bosh-lite
