@@ -10,9 +10,12 @@ alias qnd-deploy-manifest='(cd ~/workspace/cf-release && scripts/deploy-dev-rele
 
 # Deploying (bosh2 + cf-deployment)
 alias upload-capi-release='(cd ~/workspace/capi-release && bosh sync-blobs && bosh create-release --force --name capi && bosh upload-release --rebase)'
+alias create-and-deploy='~/workspace/capi-release/scripts/create-and-deploy'
+alias create-and-force-deploy='~/workspace/capi-release/scripts/create-and-deploy -n'
+alias bootstrap-cf='~/workspace/capi-release/scripts/bootstrap-cf'
 
 # PSQL
-alias psql-bosh-lite='psql -h 10.244.0.30 -p 5524 -U ccadmin ccdb'
+alias psql-bosh-lite='~/workspace/capi-release/scripts/psql-bosh-lite'
 
 #FASD
 alias v='fasd -e vim'
