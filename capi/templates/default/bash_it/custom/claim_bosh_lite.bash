@@ -93,11 +93,11 @@ echo "psql_bosh_lite"
 echo -e "${green}\n## Deploy CF with defaults ##${nc}"
 echo "\${default_cmd}"
 
-echo -e "${green}\n## Target this BOSH Director ##${nc}"
-echo "target_bosh ${env_name}"
-
 echo -e "${green}\n## Target CF API ##${nc}"
 echo "cf api https://api.${BOSH_LITE_DOMAIN} --skip-ssl-validation"
+
+echo -e "${green}\n## Target CF API, login as admin ##${nc}"
+echo "target_cf"
 
 echo -e "${green}\n## Target CF API, login as admin, and create org and space##${nc}"
 echo "bootstrap_cf"
