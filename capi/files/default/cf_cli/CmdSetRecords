@@ -13,6 +13,16 @@
   create-space -o test test
   target -o test -s test
 
+--test
+  create-org test
+  create-space -o test test
+  target -o test -s test
+
+--retest
+  create-org test
+  create-space -o test test
+  target -o test -s test
+
 --users
   create-user space_developer password
   set-space-role space_developer test test SpaceDeveloper

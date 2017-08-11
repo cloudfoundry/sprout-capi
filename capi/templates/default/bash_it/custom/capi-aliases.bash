@@ -31,3 +31,7 @@ alias g='git status'
 
 # Misc aliases
 alias gi='gem install'
+
+# dev org/space setup
+alias lite='(target_cf && cf rp test)'
+alias relite='(target_cf && cf rp retest)'
