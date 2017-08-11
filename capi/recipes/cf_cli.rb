@@ -22,11 +22,6 @@ execute 'install cf plugin repo' do
   not_if 'cf list-plugin-repos | grep -q CF-Community'
 end
 
-execute 'install cf cli Diego-Enabler plugin' do
-  command "cf uninstall-plugin Diego-Enabler; cf install-plugin Diego-Enabler -r CF-Community -f"
-  user node['sprout']['user']
-end
-
 execute 'install cf cli CLI-Recorder plugin' do
   command "cf uninstall-plugin CLI-Recorder; cf install-plugin CLI-Recorder -r CF-Community -f"
   user node['sprout']['user']
