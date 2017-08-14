@@ -19,6 +19,7 @@
   target -o test -s test
 
 --retest
+  delete-org test -f
   create-org test
   create-space -o test test
   target -o test -s test
