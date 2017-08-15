@@ -31,11 +31,11 @@ function unclaim_bosh_lite() {
 
       git mv "${file}" "${broken_pool}/unclaimed/"
       if [ -d "${env}" ]; then
-        git rm -rf "${env}" && rm -rf "${env}"
+        git rm -rf "${env}" && \rm -rf "${env}"
       fi
 
       # trigger destroy-bosh-lite job
-      date +%s > .trigger-bosh-lites-destroy && git add .trigger-bosh-lites-destroy
+      date +%s >| .trigger-bosh-lites-destroy && git add .trigger-bosh-lites-destroy
 
       git ci --quiet -m"releasing $env on ${HOSTNAME} [nostory]" --no-verify
       echo "Pushing the release commit to $( basename "$PWD" )..."
