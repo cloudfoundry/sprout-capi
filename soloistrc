@@ -52,6 +52,7 @@ node_attributes:
     git:
       hooks:
         repository: 'https://github.com/pivotal-cf-experimental/git-hooks-core.git'
+        revision: 'team/capi'
       domain: pivotal.io
       base_aliases:
         - ci duet-commit
