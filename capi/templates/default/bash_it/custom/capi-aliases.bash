@@ -15,6 +15,7 @@ alias create_and_force_deploy='upload_capi_release && ~/workspace/capi-release/s
 alias bootstrap_cf='~/workspace/capi-release/scripts/bootstrap-cf'
 alias target_cf='~/workspace/capi-release/scripts/target-cf'
 alias deploy='create_and_force_deploy'
+alias print_env_info='pushd ~/workspace/capi-env-pool && git pull &&  ~/workspace/capi-ci/ci/bosh-lite/src/print_env_info && popd'
 
 # PSQL
 alias psql_bosh_lite='~/workspace/capi-release/scripts/psql-bosh-lite'
