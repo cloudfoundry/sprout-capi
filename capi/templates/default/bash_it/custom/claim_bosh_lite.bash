@@ -104,7 +104,7 @@ echo "bootstrap_cf"
 
 echo -e "${green}\n## Retrieve CF admin password ##${nc}"
 echo 'credhub login -s "\$CREDHUB_SERVER" -u "\$CREDHUB_USERNAME" -p "\$CREDHUB_PASSWORD" --skip-tls-validation'
-echo "credhub get --name '/bosh-lite/cf/cf_admin_password' --output-json | jq -r '.value'"
+echo 'CF_PASSWORD=$(credhub get --name "/bosh-lite/cf/cf_admin_password" --output-json | jq -r ".value" | tee /dev/tty)'
 
 echo -e "${green}\n## Unclaim this environment ##${nc}"
 echo "unclaim_bosh_lite ${env_name}"
