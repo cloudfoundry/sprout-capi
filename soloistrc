@@ -38,12 +38,11 @@ recipes:
 - sprout-osx-apps::textmate_preferences
 - sprout-jetbrains-editors::rubymine
 
-# runtime-specific
+# capi-specific
 - sprout-osx-settings::ntp
 - sprout-osx-apps::go
 
 - capi
-- capi::sync
 - capi::use_ruby_direnv
 - capi::resprout_cron
 
@@ -76,9 +75,6 @@ node_attributes:
         'url."git@github.com:".pushInsteadOf': 'https://github.com/'
         'submodule.fetchJobs': "16"
       authors:
-        - initials: as
-          name: Aakash Shah
-          username: ashah
         - initials: an
           name: Annie Sing
           username: asing
@@ -88,9 +84,6 @@ node_attributes:
         - initials: lc
           name: Lisa Cho
           username: lcho
-        - initials: js
-          name: Jen Spinney
-          email: jennifer.spinney@suse.com
         - initials: gc
           name: Greg Cobb
           username: gcobb
@@ -108,10 +101,6 @@ node_attributes:
           username: zrobinson
       projects:
         - url: https://github.com/cloudfoundry/api-docs
-        - url: https://github.com/cloudfoundry/bosh-lite
-          update: true
-        - url: https://github.com/pivotal-cf-experimental/canibump
-          update: true
         - url: https://github.com/cloudfoundry/cf-release
           branch: develop
           post_clone_commands:
@@ -128,8 +117,6 @@ node_attributes:
         - url: https://github.com/cloudfoundry/docs-services
         - url: https://github.com/cloudfoundry/sprout-capi
         - url: https://github.com/cloudfoundry/capi-dockerfiles
-          update: true
-        - url: https://github.com/cloudfoundry/capi-checkman
           update: true
         - url: https://github.com/cloudfoundry/capi-ci
           update: true
@@ -159,39 +146,6 @@ node_attributes:
         ruby:
           - '2.3.3'
 
-  bosh:
-    directors:
-      - name: lite
-        url: https://192.168.50.4
-      - name: tabasco
-        url: https://bosh.tabasco.cf-app.com
-      - name: a1
-        url: https://bosh.a1.cf-app.com
-      - name: runtime1
-        url: https://micro.runtime1.cf-app.com
-      - name: runtime2
-        url: https://micro.runtime2.cf-app.com
-      - name: runtime-bb-2
-        url: https://bosh.runtime-bb-2.cf-app.com
-      - name: runtime-bb-1
-        url: https://bosh.runtime-bb-1.cf-app.com
-      - name: cat
-        url: https://bosh.cat.wild.cf-app.com
-      - name: mouse
-        url: https://bosh.mouse.wild.cf-app.com
-      - name: runtime-ci
-        url: https://bosh.runtime.ci.cf-app.com
-      - name: minimal
-        url: https://54.165.111.247
-      - name: wasabi
-        url: https://bosh.wasabi.cf-app.com
-      - name: xena
-        url: https://bosh.xena.cf-app.com
-      - name: arya
-        url: https://bosh.arya.cf-app.com
-      - name: ci
-        url: https://bosh.capi.ci.cf-app.com
-
   versions:
     bash_it: HEAD
 
@@ -220,8 +174,6 @@ node_attributes:
         - bash_it/custom/recreate_gosh_lite.bash
         - bash_it/custom/setup-direnv.bash
         - bash_it/custom/target_bosh.bash
-        - bash_it/custom/fast_bosh.bash
-        - bash_it/custom/notify.bash
         - bash_it/custom/fix_committer.bash
         - bash_it/custom/delete_orgs.bash
         - bash_it/custom/pullify.bash
@@ -259,7 +211,6 @@ node_attributes:
       - wget
     casks:
       - flycut
-      - rowanj-gitx
       - github-desktop
       - google-chrome
       - itsycal
@@ -268,10 +219,8 @@ node_attributes:
       - sequel-pro
       - screenhero
       - slack
-      - sourcetree
       - vagrant
       - virtualbox
-      - xscope
     taps:
       - cloudfoundry/tap
       - universal-ctags/universal-ctags
