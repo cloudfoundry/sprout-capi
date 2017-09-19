@@ -99,6 +99,9 @@ node_attributes:
         - initials: zr
           name: Zach Robinson
           username: zrobinson
+        - initials: rm
+          name: Raina Masand
+          username: rainmaker
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/cf-release
