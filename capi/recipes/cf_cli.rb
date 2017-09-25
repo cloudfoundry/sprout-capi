@@ -28,6 +28,6 @@ execute 'install cf cli CLI-Recorder plugin' do
 end
 
 execute 'install cf cli open plugin' do
-  command "cf uninstall-plugin open; cf install-plugin Open -r CF-Community -f"
+  command "cf uninstall-plugin open; cf install-plugin open -r CF-Community -f"
   user node['sprout']['user']
 end
