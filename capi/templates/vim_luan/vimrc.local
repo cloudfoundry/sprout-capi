@@ -4,3 +4,9 @@
 colorscheme gruvbox
 
 au FileType yaml set fdm=indent
+
+"Remap the leader key
+ :let mapleader = ','
+
+ " yank to clipboard alias
+ vnoremap <leader>y "*y
