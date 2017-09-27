@@ -101,7 +101,7 @@ node_attributes:
           username: zrobinson
         - initials: rm
           name: Raina Masand
-          username: rainmaker
+          username: rmasand
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/cf-release
