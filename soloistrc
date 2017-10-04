@@ -102,6 +102,9 @@ node_attributes:
         - initials: rm
           name: Raina Masand
           username: rmasand
+        - initials: es
+          name: Elena Sharma
+          username: esharma
       projects:
         - url: https://github.com/cloudfoundry/api-docs
         - url: https://github.com/cloudfoundry/cf-release
