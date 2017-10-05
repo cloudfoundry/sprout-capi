@@ -147,10 +147,10 @@ node_attributes:
       tile_size: 35
       magnification: false
     chruby:
-      default_ruby: '2.3'
+      default_ruby: '2.4'
       rubies:
         ruby:
-          - '2.3.3'
+          - '2.4.2'
 
   versions:
     bash_it: HEAD
