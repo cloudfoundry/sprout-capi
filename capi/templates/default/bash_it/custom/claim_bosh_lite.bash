@@ -87,8 +87,8 @@ echo "create_and_deploy"
 echo -e "${green}\n## Deploy CF noninteractively with latest CAPI release ##${nc}"
 echo "create_and_force_deploy"
 
-echo -e "${green}\n## Connect to this environment psql ##${nc}"
-echo "psql_bosh_lite"
+echo -e "${green}\n## Connect to this environment mysql ##${nc}"
+echo "mysql_bosh_lite"
 
 echo -e "${green}\n## Deploy CF with defaults ##${nc}"
 echo "\${default_cmd}"

@@ -19,6 +19,7 @@ alias print_env_info='pushd ~/workspace/capi-env-pool > /dev/null && git pull > 
 
 # PSQL
 alias psql_bosh_lite='~/workspace/capi-release/scripts/psql-bosh-lite'
+alias mysql_bosh_lite='~/workspace/capi-release/scripts/mysql-bosh-lite'
 
 #FASD
 alias v='fasd -e vim'
