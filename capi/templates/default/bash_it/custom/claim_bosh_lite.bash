@@ -73,7 +73,7 @@ target_bosh "${env_name}"
 echo -e "\n##################################\n"
 echo -e "${green}Some example commands for BOSH + CF${nc}"
 
-default_cmd='bosh deploy ~/workspace/cf-deployment/cf-deployment.yml -v system_domain=\$BOSH_LITE_DOMAIN -o ~/workspace/capi-ci/cf-deployment-operations/use-latest-stemcell.yml -o ~/workspace/capi-ci/cf-deployment-operations/skip-cert-verify.yml -o ~/workspace/cf-deployment/operations/bosh-lite.yml'
+default_cmd='bosh deploy ~/workspace/cf-deployment/cf-deployment.yml -v system_domain=\$BOSH_LITE_DOMAIN -o ~/workspace/capi-ci/cf-deployment-operations/use-latest-stemcell.yml -o ~/workspace/capi-ci/cf-deployment-operations/skip-cert-verify.yml -o ~/workspace/cf-deployment/operations/bosh-lite.yml -o ~/workspace/cf-deployment/operations/use-compiled-releases.yml'
 
 echo -e "${green}\n## Target this bosh-lite environment ##${nc}"
 echo "target_bosh ${env_name}"
