@@ -102,6 +102,9 @@ echo "target_cf"
 echo -e "${green}\n## Target CF API, login as admin, and create org and space##${nc}"
 echo "bootstrap_cf"
 
+echo -e "${green}\n## Target UAA API, login as uaa admin ##${nc}"
+echo "target_uaa"
+
 echo -e "${green}\n## Retrieve CF admin password ##${nc}"
 echo 'credhub login -s "\$CREDHUB_SERVER" -u "\$CREDHUB_USERNAME" -p "\$CREDHUB_PASSWORD" --skip-tls-validation'
 echo "credhub get --name '/bosh-lite/cf/cf_admin_password' --output-json | jq -r '.value'"

@@ -14,6 +14,7 @@ alias create_and_deploy='upload_capi_release && ~/workspace/capi-release/scripts
 alias create_and_force_deploy='upload_capi_release && ~/workspace/capi-release/scripts/deploy -n'
 alias bootstrap_cf='~/workspace/capi-release/scripts/bootstrap-cf'
 alias target_cf='~/workspace/capi-release/scripts/target-cf'
+alias target_uaa='~/workspace/capi-release/scripts/target-uaa'
 alias deploy='create_and_force_deploy'
 alias print_env_info='pushd ~/workspace/capi-env-pool > /dev/null && git pull > /dev/null &&  ~/workspace/capi-ci/ci/bosh-lite/src/print_env_info && popd > /dev/null'
 
