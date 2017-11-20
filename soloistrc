@@ -50,7 +50,7 @@ node_attributes:
   sprout:
     git:
       hooks:
-        repository: 'https://github.com/pivotal-cf-experimental/git-hooks-core.git'
+        repository: 'https://github.com/pivotal-cf/git-hooks-core.git'
         revision: 'team/capi'
       domain: pivotal.io
       base_aliases:
