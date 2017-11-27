@@ -75,6 +75,9 @@ node_attributes:
         'url."git@github.com:".pushInsteadOf': 'https://github.com/'
         'submodule.fetchJobs': "16"
       authors:
+        - initials: ml
+          name: Maryam Labib
+          username: mlabib
         - initials: an
           name: Annie Sing
           username: asing
@@ -90,12 +93,6 @@ node_attributes:
         - initials: ep
           name: Eric Promislow
           email: eric.promislow@suse.com
-        - initials: lf
-          name: Lyle Franklin
-          username: lfranklin
-        - initials: mr
-          name: Matt Royal
-          username: mroyal
         - initials: zr
           name: Zach Robinson
           username: zrobinson

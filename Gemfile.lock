@@ -170,7 +170,6 @@ DEPENDENCIES
   foodcritic
   plist
   soloist
-  yajl-ruby (= 1.3.0)
 
 BUNDLED WITH
    1.15.4
