@@ -216,16 +216,10 @@ node_attributes:
       - wget
     casks:
       - flycut
-      - github-desktop
       - google-chrome
       - itsycal
-      - karabiner
-      - macvim
       - sequel-pro
-      - screenhero
       - slack
-      - vagrant
-      - virtualbox
     taps:
       - cloudfoundry/tap
       - universal-ctags/universal-ctags
