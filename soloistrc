@@ -199,6 +199,7 @@ node_attributes:
       - name: fzf
         head: true
       - git-secrets
+      - gnatsd # for cc unit tests
       - jq
       - node
       - pstree
