@@ -35,7 +35,6 @@ recipes:
 - sprout-postgresql
 
 # apps (editors)
-- sprout-osx-apps::textmate_preferences
 - sprout-jetbrains-editors::rubymine
 
 # capi-specific
@@ -102,35 +101,6 @@ node_attributes:
         - initials: es
           name: Elena Sharma
           username: esharma
-      projects:
-        - url: https://github.com/cloudfoundry/api-docs
-        - url: https://github.com/cloudfoundry/cf-release
-          branch: develop
-          post_clone_commands:
-            - ./scripts/update
-            - ./scripts/setup-git-hooks
-        - url: https://github.com/cloudfoundry/capi-release
-          branch: develop
-          post_clone_commands:
-            - ./scripts/update
-        - url: https://github.com/cloudfoundry/diego-release
-          branch: develop
-          post_clone_commands:
-            - ./scripts/update
-        - url: https://github.com/cloudfoundry/docs-services
-        - url: https://github.com/cloudfoundry/sprout-capi
-        - url: https://github.com/cloudfoundry/capi-dockerfiles
-          update: true
-        - url: https://github.com/cloudfoundry/capi-ci
-          update: true
-        - url: https://github.com/cloudfoundry/cf-deployment
-        - url: https://github.com/cloudfoundry/bosh-deployment
-        - url: https://github.com/cloudfoundry/sync-integration-tests
-          workspace_path: ~/go/src/github.com/cloudfoundry/
-        # private repos
-        - url: git@github.com:cloudfoundry/capi-env-pool.git
-        - url: git@github.com:cloudfoundry/capi-ci-private.git
-        - url: git@github.com:cloudfoundry/capi-datadog.git
     cred_alert:
       download_url: https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin
     terminal:
