@@ -106,7 +106,7 @@ echo -e "${green}\n## Target UAA API, login as uaa admin ##${nc}"
 echo "target_uaa"
 
 echo -e "${green}\n## Retrieve CF admin password ##${nc}"
-echo 'credhub login -s "\$CREDHUB_SERVER" -u "\$CREDHUB_USERNAME" -p "\$CREDHUB_PASSWORD" --skip-tls-validation'
+echo 'credhub login --skip-tls-validation'
 echo "credhub get --name '/bosh-lite/cf/cf_admin_password' --output-json | jq -r '.value'"
 #TODO: Get this variant working:
 #echo 'CF_PASSWORD=$(credhub get --name "/bosh-lite/cf/cf_admin_password" --output-json | jq -r ".value" | tee /dev/tty)'
