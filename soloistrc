@@ -101,6 +101,9 @@ node_attributes:
         - initials: es
           name: Elena Sharma
           username: esharma
+        - initials: cs
+          name: Chris Selzo
+          username: cselzo
     cred_alert:
       download_url: https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin
     terminal:
