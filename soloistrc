@@ -104,6 +104,10 @@ node_attributes:
         - initials: cs
           name: Chris Selzo
           username: cselzo
+        - initials: ch
+          name: Charles Hansen
+          username: charleshansen
+
     cred_alert:
       download_url: https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin
     terminal:
