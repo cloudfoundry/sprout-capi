@@ -80,6 +80,9 @@ node_attributes:
         - initials: as
           name: Annie Sing
           username: asing
+        - initials: dwf
+          name: Davis W. Frank
+          username: dwfrank
         - initials: td
           name: Tim Downey
           username: tdowney
