@@ -110,7 +110,9 @@ node_attributes:
         - initials: ch
           name: Charles Hansen
           username: chansen
-
+        - initials: ay
+          name: An Yu
+          username: anyu
     cred_alert:
       download_url: https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_darwin
     terminal:
