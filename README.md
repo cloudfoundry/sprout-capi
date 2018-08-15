@@ -1,3 +1,10 @@
+# THIS REPOSITORY HAS BEEN DEPRECATED
+
+The current approach to solving this problem is https://github.com/cloudfoundry/capi-workspace
+
+---
+
+Historical README:
 # sprout-wrap
 
 [![Build Status](https://travis-ci.org/cloudfoundry/sprout-capi.png?branch=master)](https://travis-ci.org/cloudfoundry/sprout-capi)
